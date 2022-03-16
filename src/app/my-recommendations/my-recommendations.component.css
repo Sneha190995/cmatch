@@ -1,0 +1,46 @@
+ .card{
+   border-radius: 10px;
+ }
+ .card.body{
+  text-align: start;
+  border-radius: 15px;
+  background-color: honeydew;
+}
+
+.cmatch-card {
+
+  background-color:  #ffffff;
+  
+  opacity: 0.8;
+  color: black;
+  font-weight: 500;
+  text-align: center;
+  width: 230px;
+  margin: 20px;
+  border-radius: 20px;
+  text-align: center;
+
+}
+
+.cmatch_team1 {
+  background-color: cornflowerblue;
+}
+
+.cmatch_team2 {
+  background-color: dodgerblue;
+}
+.container {
+  background-color:#dcdde1;
+}
+
+.container-fluid {
+  background-color: #dcdde1;
+}
+
+.recommend{
+  background-color: cadetblue;
+}
+.unrecommend{
+  background-color: gray;
+}
+

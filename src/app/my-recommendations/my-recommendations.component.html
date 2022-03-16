@@ -1,0 +1,49 @@
+<div class = " container-fluid">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Search</h3>
+                        <input type="text" placeholder="Search Here" required id="#search-text-field" [(ngModel)]="searchInput" />
+                        <button type="submit" id="#search-button" (click)="confirm(searchInput)">Search</button>
+                        <button type="submit"  (click)="clear()">Clear</button>
+                    </div>
+                    <div class="col-md-6 pt-3" *ngFor="let match of resultMatches" id="#search-results">
+                        <div class="card cmatch-card">
+                            <div class="card-body">
+                                <p>{{match.type}}</p>
+                                <h5 class="cmatch_team1">{{match.team_1}}</h5>
+                                <h5 class="cmatch_team2">{{match.team_2}}</h5>
+                                <p>{{match.date | date}}</p>
+                                <p>{{match.dateTimeGMT | date: 'short':'GMT'}}</p>
+                                <!-- <button class="btn btn-sm btn-info" (click)="Recommendation(match.unique_id)">Recom</button>
+                                <button class="btn btn-sm btn-info" (click)="unRecommendation(match.unique_id)">unRecom</button> -->
+                                <button class="btn btn-sm recommend" [hidden]='match.recommend' (click)="recommendation(match.unique_id)">Recom</button> 
+                                <button class="btn btn-sm unrecommend" [hidden]='match.unrecommend' (click)="unrecommendation(match.unique_id)">Unrecom</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-6">
+                <h3>Recommendation</h3>
+                <div *ngFor="let match of recommendList" id="#search-results">
+                    <div class="card cmatch-card">
+                        <div class="card-body">
+                            <p>{{match.type}}</p>
+                            <h5 class="cmatch_team1">{{match.team_1}}</h5>
+                            <h5 class="cmatch_team2">{{match.team_2}}</h5>
+                            <p>{{match.date | date }}</p>
+                            <p>{{match.dateTimeGMT | date: 'short':'GMT'}}</p>
+                            <p> TOSS WINNER {{match.toss_winner_team}}</p>
+                            <P> MATCH WINNER {{match.winner_team}}</P>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

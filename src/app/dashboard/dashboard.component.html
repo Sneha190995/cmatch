@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class ="container">
+        <div class = "row">
+            <div class="col-md-4">
+                <div class="row">
+                   <div class = "col-md-12">
+                     <h3>Upcoming Matches</h3>
+                   </div>
+                   
+                    <div class="col-md-6" *ngFor="let match of matches | paginate: { id : 'listing_pagination',
+                          itemsPerPage: 4,
+                          currentPage : page,
+                          totalItems: totalRecord}" id="#search-results">
+                        <div class="card cmatch-card" style = " box-shadow: 5px 5px 5px grey">
+                           <div class="card-body">
+                              <p>{{match.type}}</p>
+                              <h5 class="cmatch_team1">{{match.team_1}}</h5>
+                              <h5 class="cmatch_team2">{{match.team_2}}</h5>
+                              <p>{{match.date | date }}</p>
+                              <p>{{match.dateTimeGMT | date: 'short':'GMT'}}</p>
+                              <button class="btn btn-sm recommend" [hidden]='match.recommend' (click)="Recommendation(match.unique_id)">Recom</button>
+                              <button class="btn btn-sm unrecommend" [hidden]='match.unrecommend' (click)="Unrecommendation(match.unique_id)">unRecom</button>
+                           </div>
+                        </div>
+                     </div>
+                     <pagination-controls id ="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                   <div class ="col-md-12">  
+                      <h3>Old Matches</h3>
+                  </div>
+                  
+                    <div class="col-md-6 pt-3" *ngFor="let match of oldMatches | paginate: { id : 'listing_pagination1',
+                    itemsPerPage: 4,
+                    currentPage : pages,
+                    totalItems: totalRecord1}" id="#search-results">
+                        <div class="card cmatch-card" style = " box-shadow: 5px 5px 5px grey">
+                           <div class="card-body">
+                              <p class="cmatch-des">{{match.description}}</p>
+                              <!-- <p>{{match.unique_id}}</p> -->
+                              <p class="cmatch-title">{{match.title}}</p>
+                             
+                              <button class="btn btn-sm recommend" [hidden]='match.recommend' (click)="Recommendation1(match.unique_id)">Recom</button>
+                              <button class="btn btn-sm unrecommend" [hidden]='match.unrecommend' (click)="Unrecommendation1(match.unique_id)">unRecom</button>
+                           </div>
+                        </div>
+                     </div>
+                     <pagination-controls id ="listing_pagination1" maxSize="5" directionLinks="true" (pageChange)="pages = $event"></pagination-controls>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                   <div class="col-md-12">
+                     <h3>Recommendated matches</h3>
+                   </div>
+                    
+                    <div class="col-md-6 pt-3" *ngFor="let match of resultRecom" id="#search-results">
+                        <div class="card cmatch-card" style = " box-shadow: 5px 5px 5px grey">
+                           <div class="card-body">
+                              <p>{{match.type}}</p>
+                              <h5 class="cmatch_team1">{{match.team_1}}</h5>
+                              <h5 class="cmatch_team2">{{match.team_2}}</h5>
+                              <p>{{match.date | date }}</p>
+                              <p>{{match.dateTimeGMT | date: 'short':'GMT'}}</p>
+                              <p> TOSS WINNER {{match.toss_winner_team}}</p>
+                              <P class="cmatch-winner_team"> MATCH WINNER {{match.winner_team}}</P>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="col-md-6 pt-3" *ngFor="let match1 of resultRecom1" id="#search-results">
+                        <div class="card cmatch-card" style = " box-shadow: 5px 5px 5px grey">
+                           <div class="card-body page">
+                            <p class="cmatch-des">{{match1.description}}</p>
+                            <p>{{match1.unique_id}}</p>
+                            <p class="cmatch-title">{{match1.title}}</p>
+                           </div>
+                        </div>
+                     </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
